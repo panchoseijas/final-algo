@@ -6,7 +6,7 @@ function Estrellas({ groupName , questionIndex, respuestas, onChange }) {
   
     const handleChange = (event) => {
       setSelectedValue(event.target.value);
-      respuestas.push(event.target.value);
+      respuestas.push(Number(event.target.value));
     };
   
     // const handleChange = (event) => {
@@ -37,11 +37,24 @@ function Estrellas({ groupName , questionIndex, respuestas, onChange }) {
             </React.Fragment>
           );
         })}
-        <p>{selectedValue}</p>
       </div>
     );
   }
   
+  async function postResults (respuestas) {
+    const response = await fetch('http://127.0.0.1:8001/resultado', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(respuestas),
+    });
+    return response.json();
+
+  }
+    
+
+
   
   function Form() {
   
@@ -71,9 +84,20 @@ function Estrellas({ groupName , questionIndex, respuestas, onChange }) {
         });
     }
 
-
+    postResults([ 
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10,
+      10, 10, 10, 10
+  ]).then(data => {
+      console.log(data);
+  });
     return (<>
-     <h1>{areaActual}</h1>
+     <h1>{areaActual.toLocaleUpperCase()}</h1>
       <form >
         {areas[areaActual].preguntas.map((pregunta, index) => (
           <div key={index}>
@@ -85,6 +109,7 @@ function Estrellas({ groupName , questionIndex, respuestas, onChange }) {
         ))}
         <button onClick={handleSubmit}>Submit</button>
       </form>
+
     </>
        
     );

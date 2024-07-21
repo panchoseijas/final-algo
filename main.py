@@ -5,7 +5,18 @@ from fastapi import Request
 import uvicorn
 from calcular_probabilidades_areas import calcular_probabilidades_areas
 
+from fastapi.middleware.cors import CORSMiddleware
+
 app = FastAPI()
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[""],  # Allow all origins
+    allow_credentials=True,
+    allow_methods=[""],
+    allow_headers=["*"],
+)
+
 templates = Jinja2Templates(directory="templates")
 
 @app.get("/", response_class=HTMLResponse)
@@ -19,4 +30,4 @@ async def post_resultado(request: Request):
     return calcular_probabilidades_areas(respuestas)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="127.0.0.1", port=8000)
+    uvicorn.run(app, host="127.0.0.1", port=8001)

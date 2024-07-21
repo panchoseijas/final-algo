@@ -6,7 +6,9 @@ import Form from './Form';
 
 function App() {
   return (
-    <Form></Form>
+    <div className=''>
+    <Form/>
+    </div>
   );
 }
 
