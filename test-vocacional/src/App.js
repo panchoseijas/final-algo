@@ -4,13 +4,22 @@ import './App.css'
 
 import Form from './components/Form'
 import Resultados from './components/resultados'
+import Header from './components/header'
+
+
 
 function App() {
   const [resultados, setResultados] = useState(null)
-  return resultados ? (
-    <Resultados resultados={resultados} />
-  ) : (
-    <Form setResultados={setResultados} />
+  return (
+    <div className='container'>
+      <Header />
+      {resultados ? (
+        <Resultados resultados={resultados} />
+      ) : (
+        <Form setResultados={setResultados} />
+      )}
+
+    </div>
   )
 }
 
