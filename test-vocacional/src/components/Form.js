@@ -63,19 +63,26 @@ function Form() {
     });
   };
 
-  return (<>
-    <h1>{areaActual.toLocaleUpperCase()}</h1>
-    <form >
-      {areas[areaActual].preguntas.map((pregunta, index) => (
-        <div key={areaActual + index}>
-          <p>{pregunta}</p>
-          <Estrellas groupName={areaActual} questionIndex={index} onChange={handleChange} />
-        </div>))}
-      <button onClick={handleSubmit}>Submit</button>
-    </form>
+  return (
+    <>
 
-  </>
-
+      <form>
+        {etapasCompletadas < nombresAreas.length - 1 ? (
+          <>
+            <h1>{areaActual.toLocaleUpperCase()}</h1>
+            {areas[areaActual].preguntas.map((pregunta, index) => (
+              <div key={areaActual + index}>
+                <p>{pregunta}</p>
+                <Estrellas groupName={areaActual} questionIndex={index} onChange={handleChange} />
+              </div>
+            ))}
+            <button onClick={handleSubmit}>Submit</button>
+          </>
+        ) : (
+          <h1>Terminaste</h1>
+        )}
+      </form>
+    </>
   );
 }
 
