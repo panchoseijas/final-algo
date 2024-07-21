@@ -1,12 +1,9 @@
-import React, { useState } from 'react';
-import areas from '../preguntas.js';
-import Estrellas from './estrellas.js';
-
-
+import React, { useState } from 'react'
+import areas from '../preguntas.js'
+import Estrellas from './estrellas.js'
 
 async function postResults(respuestas) {
-
-  //   postResults([ 
+  //   postResults([
   //     10, 10, 10, 10,
   //     10, 10, 10, 10,
   //     10, 10, 10, 10,
@@ -18,62 +15,65 @@ async function postResults(respuestas) {
   // ]).then(data => {
   //     console.log(data);
   // });
-  const response = await fetch('http://127.0.0.1:8001/resultado', {
+  // console.log('hola')
+  const response = await fetch('http://localhost:8000/resultado', {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
     },
     body: JSON.stringify(respuestas),
-  });
-  return response.json();
-
+  })
+  return response.json()
 }
 
+function Form({ setResultados }) {
+  const [etapasCompletadas, setCompletadStages] = useState(0)
+  const [respuestas, setRespuestas] = useState([])
+  const nombresAreas = Object.keys(areas)
+  const [areaActual, setAreaActual] = useState(nombresAreas[etapasCompletadas])
 
-
-
-function Form() {
-
-
-  const [etapasCompletadas, setCompletadStages] = useState(0);
-  const [respuestas, setRespuestas] = useState([]);
-  const nombresAreas = Object.keys(areas);
-  const [areaActual, setAreaActual] = useState(nombresAreas[etapasCompletadas]);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault()
     if (etapasCompletadas === nombresAreas.length - 1) {
+      const resultados = await postResults(
+        Object.values(respuestas)
+          .flat()
+          .map((numero) => Number(numero))
+      )
+      setResultados(resultados)
 
-      console.log(Object.values(respuestas).flat());
-      return;
+      return
     }
-    setCompletadStages(etapasCompletadas + 1);
-    setAreaActual(nombresAreas[etapasCompletadas + 1]);
-
+    setCompletadStages(etapasCompletadas + 1)
+    setAreaActual(nombresAreas[etapasCompletadas + 1])
   }
 
   const handleChange = (name, index, value) => {
     setRespuestas((prevRespuestas) => {
-      const updatedRespuestas = { ...prevRespuestas };
+      const updatedRespuestas = { ...prevRespuestas }
       if (!updatedRespuestas[name]) {
-        updatedRespuestas[name] = [];
+        updatedRespuestas[name] = []
       }
-      updatedRespuestas[name][index] = value;
-      return updatedRespuestas;
-    });
-  };
-
+      updatedRespuestas[name][index] = value
+      return updatedRespuestas
+    })
+  }
+  console.log(etapasCompletadas)
+  console.log(nombresAreas)
   return (
     <>
-
       <form className=''>
-        {etapasCompletadas < nombresAreas.length - 1 ? (
+        {etapasCompletadas < nombresAreas.length ? (
           <>
             <h1>{areaActual.toLocaleUpperCase()}</h1>
             {areas[areaActual].preguntas.map((pregunta, index) => (
               <div key={areaActual + index} className='pregunta'>
                 <p>{pregunta}</p>
-                <Estrellas groupName={areaActual} questionIndex={index} onChange={handleChange} />
+                <Estrellas
+                  groupName={areaActual}
+                  questionIndex={index}
+                  onChange={handleChange}
+                />
               </div>
             ))}
             <button onClick={handleSubmit}>Submit</button>
@@ -83,7 +83,7 @@ function Form() {
         )}
       </form>
     </>
-  );
+  )
 }
 
-export default Form;
+export default Form

@@ -43,3 +43,9 @@ input[type="radio"] {
 .black{
   color: black;
 }
+
+label:hover,
+label:hover ~ label {
+    color: orange;
+    cursor: pointer;
+}

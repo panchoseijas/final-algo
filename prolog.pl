@@ -67,7 +67,7 @@ calcular_probabilidades_respuestas(Respuestas, Probabilidades) :-
     findall(Pregunta, pregunta(_, Pregunta), Preguntas),
     length(Preguntas, Len),
     length(Respuestas, Len),
-    forall(member(R, Respuestas), (R >= 1, R =< 10)),
+    forall(member(R, Respuestas), (R >= 0, R =< 10)),
     findall(Area, pregunta(Area, _), Areas),
     list_to_set(Areas, AreasSet),
     calcular_probabilidades(AreasSet, Preguntas, Respuestas, Probabilidades).

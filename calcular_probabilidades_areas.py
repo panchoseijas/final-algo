@@ -20,5 +20,3 @@ def calcular_probabilidades_areas(respuestas):
         return probabilidades_areas
     else:
         raise Exception("Error con el interprete prolog")
-
-    
