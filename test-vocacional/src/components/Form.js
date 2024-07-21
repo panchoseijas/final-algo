@@ -66,12 +66,12 @@ function Form() {
   return (
     <>
 
-      <form>
+      <form className=''>
         {etapasCompletadas < nombresAreas.length - 1 ? (
           <>
             <h1>{areaActual.toLocaleUpperCase()}</h1>
             {areas[areaActual].preguntas.map((pregunta, index) => (
-              <div key={areaActual + index}>
+              <div key={areaActual + index} className='pregunta'>
                 <p>{pregunta}</p>
                 <Estrellas groupName={areaActual} questionIndex={index} onChange={handleChange} />
               </div>
@@ -79,7 +79,7 @@ function Form() {
             <button onClick={handleSubmit}>Submit</button>
           </>
         ) : (
-          <h1>Terminaste</h1>
+          <h1>{JSON.stringify(respuestas)}</h1>
         )}
       </form>
     </>

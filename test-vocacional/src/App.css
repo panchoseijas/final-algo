@@ -1,8 +1,20 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+h1, p {
+  font-size: 30px;
+  color: #333;
+  text-align: center;
+  margin-top: 20px;
+}
+
 
 .estrellas{
   font-size: 30px;
   padding: 0;
-  font-size: 50px;
   unicode-bidi: bidi-override;
   margin: 0;
   padding-top: 25px;
@@ -14,8 +26,14 @@ input[type="radio"] {
 
 .calificacion{
   font-size: 35px;
-  margin:0;
+  margin: auto;
   direction: rtl; 
+}
+
+.pregunta{
+  font-size: 25px;
+  margin: auto;
+  text-align: center;
 }
 
 .yellow {
@@ -24,12 +42,4 @@ input[type="radio"] {
 
 .black{
   color: black;
-}
-
-.container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
 }
