@@ -76,11 +76,19 @@ const Resultados = ({ resultados }) => {
     },
   }
 
+  const porcentajes = data.datasets[0].data
+  const maxPorcentaje = Math.max(...porcentajes)
+  const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)]
   return (
-    <div style={{ width: '50%', height: '50%' }}>
-      <Bar data={data} options={options} />
-    </div>
+    data && (
+      <div style={{ width: '50%', height: '50%', margin: 'auto' }}>
+        <h3>Te recomendamos: {areaRecomendada}</h3>
+        <Bar data={data} options={options} />
+      </div>
+    )
   )
 }
+
+
 
 export default Resultados

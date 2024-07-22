@@ -4,7 +4,6 @@ import './App.css'
 
 import Form from './components/Form'
 import Resultados from './components/resultados'
-import Header from './components/header'
 
 
 
@@ -12,7 +11,9 @@ function App() {
   const [resultados, setResultados] = useState(null)
   return (
     <div className='container'>
-      <Header />
+      <header className='header'>
+        <h1>Test Vocacional</h1>
+      </header>
       {resultados ? (
         <Resultados resultados={resultados} />
       ) : (
