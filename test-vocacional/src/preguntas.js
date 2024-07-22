@@ -7,7 +7,7 @@ const areas = {
       'Entender un texto escrito',
     ],
   },
-  logicaMatematica: {
+  logica_matematica: {
     preguntas: [
       'Hacer cuentas matemáticas',
       'Usar estadísticas',
@@ -39,7 +39,7 @@ const areas = {
       'Iniciar y mantener conversaciones con otras personas',
     ],
   },
-  kinestesicoCorporal: {
+  kinestesico_corporal: {
     preguntas: [
       'Hacer ejercicio físico',
       'Hacer movimientos que requieren equilibrio',

@@ -62,8 +62,8 @@ function Preguntas({ areas, setResultados }) {
 
 
   return (
-    <>
-      <h1>{areaActual.toLocaleUpperCase()}</h1>
+    <div className='container-pregunta'>
+      <h1>{areaActual.toLocaleUpperCase().replace('_', ' ')}</h1>
       {areas[areaActual].preguntas.map((pregunta, index) => (
         <div key={areaActual + index} className='pregunta'>
           <p>{pregunta}</p>
@@ -75,7 +75,7 @@ function Preguntas({ areas, setResultados }) {
         </div>
       ))}
       <Button variant='contained' onClick={handleSubmit}>Submit</Button>
-    </>
+    </div>
   )
 }
 
