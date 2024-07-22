@@ -13,6 +13,17 @@ import {
 // Registrar los componentes de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
+const carreras = {
+  "Lingüística": ["Periodista", "Escritor", "Editor", "Profesor de Lengua"],
+  "Lógica Matemática": ["Matemático", "Ingeniero", "Estadístico", "Científico de Datos"],
+  "Espacial": ["Arquitecto", "Diseñador Gráfico", "Ingeniero Civil", "Artista"],
+  "Música": ["Músico", "Compositor", "Director de Orquesta", "Profesor de Música"],
+  "Interpersonal": ["Psicólogo", "Trabajador Social", "Docente", "Líder de Recursos Humanos"],
+  "Kinestésico Corporal": ["Deportista", "Fisioterapeuta", "Bailarín", "Entrenador Personal"],
+  "Intrapersonal": ["Psicoterapeuta", "Coach", "Filósofo", "Consultor"],
+  "Naturalista": ["Biólogo", "Agrónomo", "Ecologista", "Veterinario"]
+}
+
 const Resultados = ({ resultados }) => {
   const data = {
     labels: [
@@ -83,6 +94,12 @@ const Resultados = ({ resultados }) => {
     data && (
       <div style={{ width: '50%', height: '50%', margin: 'auto' }}>
         <h3>Te recomendamos: {areaRecomendada}</h3>
+        <h4>Carreras recomendadas:</h4>
+        <ul>
+          {carreras[areaRecomendada].map((carrera, index) => (
+            <li key={index}>{carrera}</li>
+          ))}
+        </ul>
         <Bar data={data} options={options} />
       </div>
     )

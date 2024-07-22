@@ -27,8 +27,7 @@ function Preguntas({ areas, setResultados }) {
     if (etapasCompletadas === nombresAreas.length - 1) {
       // const resultados = await postResults(
       //   Object.values(respuestas)
-      //     .flat()
-      //     .map((numero) => Number(numero))
+      //     .flat())
       // )
 
       const resultados = {
