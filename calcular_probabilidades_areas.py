@@ -12,6 +12,7 @@ def calcular_probabilidades_areas(respuestas):
         probabilidades_areas = {}
         lista_probabilidades = resultado[0]['Probabilidades']
         for probabilidad in lista_probabilidades:
+            probabilidad = str(probabilidad)
             partes = probabilidad.replace("-", "").replace("(", "").replace(")", "").split(",")
             area = partes[0]
             probabilidad = round(float(partes[1]), 2)

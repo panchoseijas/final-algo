@@ -10,7 +10,7 @@ import Resultados from './components/resultados'
 function App() {
   const [resultados, setResultados] = useState(null)
   return (
-    <div className='container'>
+    <div className='container fadeIn'>
       <header className='header'>
         <h1>Test Vocacional</h1>
       </header>

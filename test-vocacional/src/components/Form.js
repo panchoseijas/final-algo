@@ -25,22 +25,10 @@ function Preguntas({ areas, setResultados }) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     if (etapasCompletadas === nombresAreas.length - 1) {
-      // const resultados = await postResults(
-      //   Object.values(respuestas)
-      //     .flat())
-      // )
+       const resultados = await postResults(
+         Object.values(respuestas)
+           .flat())
 
-      const resultados = {
-        linguistica: 10,
-        logica_matematica: 5,
-        espacial: 15,
-        musica: 20,
-        interpersonal: 5,
-        kinestesico_corporal: 20,
-        intrapersonal: 13,
-        naturalista: 12,
-
-      }
       setResultados(resultados)
 
       return
@@ -62,10 +50,10 @@ function Preguntas({ areas, setResultados }) {
 
 
   return (
-    <div className='container-pregunta'>
+    <div className='container-pregunta fadeIn'>
       <h1>{areaActual.toLocaleUpperCase().replace('_', ' ')}</h1>
       {areas[areaActual].preguntas.map((pregunta, index) => (
-        <div key={areaActual + index} className='pregunta'>
+        <div key={areaActual + index} className='pregunta fadeIn'>
           <p>{pregunta}</p>
           <Estrellas
             groupName={areaActual}
@@ -74,7 +62,7 @@ function Preguntas({ areas, setResultados }) {
           />
         </div>
       ))}
-      <Button variant='contained' onClick={handleSubmit}>Submit</Button>
+      <Button variant='contained' onClick={handleSubmit}>Siguiente</Button>
     </div>
   )
 }
