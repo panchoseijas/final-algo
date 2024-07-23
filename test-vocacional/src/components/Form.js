@@ -28,7 +28,6 @@ function Preguntas({ areas, setResultados }) {
        const resultados = await postResults(
          Object.values(respuestas)
            .flat())
-
       setResultados(resultados)
 
       return

@@ -9,6 +9,7 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
+import Button from '@mui/material/Button';
 
 // Registrar los componentes de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
@@ -92,7 +93,7 @@ const Resultados = ({ resultados }) => {
   const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)]
   return (
     data && (
-      <div style={{ width: '50%', height: '50%', margin: 'auto' }}>
+      <div>
         <h3>Te recomendamos: {areaRecomendada}</h3>
         <h4>Carreras recomendadas:</h4>
         <ul>
@@ -101,6 +102,9 @@ const Resultados = ({ resultados }) => {
           ))}
         </ul>
         <Bar data={data} options={options} />
+        <Button className='button' variant='contained' onClick={() => window.location.reload(true)} size='large'>
+              Volver a Empezar
+            </Button>
       </div>
     )
   )
