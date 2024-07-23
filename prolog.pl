@@ -4,30 +4,30 @@ pregunta(linguistica, "Escribir textos").
 pregunta(linguistica, "Analizar e identificar las ideas principales de un texto").
 pregunta(linguistica, "Entender un texto escrito").
 
-pregunta(logica_matematica, "Hacer cuentas matemáticas").
-pregunta(logica_matematica, "Usar estadísticas").
-pregunta(logica_matematica, "Solucionar problemas lógicos").
-pregunta(logica_matematica, "Pensar y descomponer lógicamente un problema").
+pregunta(logica_matematica, "Hacer cuentas matematicas").
+pregunta(logica_matematica, "Usar estadisticas").
+pregunta(logica_matematica, "Solucionar problemas logicos").
+pregunta(logica_matematica, "Pensar y descomponer logicamente un problema").
 
 pregunta(espacial, "Dibujar de forma precisa").
 pregunta(espacial, "Armar maquetas o modelos").
 pregunta(espacial, "Dibujar planos").
-pregunta(espacial, "Diseñar objetos").
+pregunta(espacial, "Disenar objetos").
 
 pregunta(musica, "Tocar un instrumento musical").
-pregunta(musica, "Escuchar música").
+pregunta(musica, "Escuchar musica").
 pregunta(musica, "Cantar").
 pregunta(musica, "Escuchar y reconocer distintos instrumentos musicales").
 
 pregunta(interpersonal, "Coordinar grupos").
-pregunta(interpersonal, "Exponer un tema o idea en público").
+pregunta(interpersonal, "Exponer un tema o idea en publico").
 pregunta(interpersonal, "Defender los derechos de otras personas").
 pregunta(interpersonal, "Iniciar y mantener conversaciones con otras personas").
 
-pregunta(kinestesico_corporal, "Hacer ejercicio físico").
+pregunta(kinestesico_corporal, "Hacer ejercicio fisico").
 pregunta(kinestesico_corporal, "Hacer movimientos que requieren equilibrio").
 pregunta(kinestesico_corporal, "Manejar objetos de forma precisa").
-pregunta(kinestesico_corporal, "Manipular objetos con coordinación").
+pregunta(kinestesico_corporal, "Manipular objetos con coordinacion").
 
 pregunta(intrapersonal, "Reconocer estados emocionales propios").
 pregunta(intrapersonal, "Tener Autocontrol Emocional").
@@ -35,9 +35,9 @@ pregunta(intrapersonal, "Contener emocionalmente a otras personas").
 pregunta(intrapersonal, "Analizar tus propios pensamientos y acciones").
 
 pregunta(naturalista, "Estar en contacto con la naturaleza").
-pregunta(naturalista, "Analizar materia orgánica").
-pregunta(naturalista, "Estudiar temas vinculados a la biología y el cuerpo humano").
-pregunta(naturalista, "Analizar fenómenos naturales").
+pregunta(naturalista, "Analizar materia organica").
+pregunta(naturalista, "Estudiar temas vinculados a la biologia y el cuerpo humano").
+pregunta(naturalista, "Analizar fenomenos naturales").
 
 % Carreras y profesiones en diferentes campos
 
