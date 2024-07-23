@@ -39,6 +39,14 @@ pregunta(naturalista, "Analizar materia orgánica").
 pregunta(naturalista, "Estudiar temas vinculados a la biología y el cuerpo humano").
 pregunta(naturalista, "Analizar fenómenos naturales").
 
+
+% Consulta para obtener las preguntas agrupadas por área
+preguntas_por_area(Resultado) :-
+    findall(Area-Preguntas, (
+        pregunta(Area, _),
+        findall(Pregunta, pregunta(Area, Pregunta), Preguntas)
+    ), Resultado).
+
 % Función para sumar las puntuaciones por área
 sumar_puntuaciones([], [], 0).
 sumar_puntuaciones([Respuesta|Respuestas], [Pregunta|Preguntas], Suma) :-

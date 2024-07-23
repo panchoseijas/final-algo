@@ -15,15 +15,23 @@ body {
   animation-duration: 1s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
   }
-  @-webkit-keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
+  100% {
+    opacity: 1;
   }
-  @keyframes fadeIn {
-  0% {opacity: 0;}
-  100% {opacity: 1;}
-  } 
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 .container {
   width: 80%;
@@ -33,7 +41,6 @@ body {
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border-radius: 8px;
-
 }
 
 h1 {
@@ -44,7 +51,7 @@ h1 {
 }
 
 header {
-  background-color: #1976D2;
+  background-color: #1976d2;
   color: #fff;
   padding: 15px 0;
   text-align: center;
