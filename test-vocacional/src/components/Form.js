@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-// import data from '../preguntas.js'
 import Estrellas from './estrellas.js'
 import Button from '@mui/material/Button';
 import { useEffect } from 'react';

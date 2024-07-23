@@ -39,6 +39,58 @@ pregunta(naturalista, "Analizar materia orgánica").
 pregunta(naturalista, "Estudiar temas vinculados a la biología y el cuerpo humano").
 pregunta(naturalista, "Analizar fenómenos naturales").
 
+% Carreras y profesiones en diferentes campos
+
+% Lingüística
+carrera(linguistica, periodista).
+carrera(linguistica, escritor).
+carrera(linguistica, editor).
+carrera(linguistica, profesor_de_lengua).
+
+% Lógica Matemática
+carrera(logica_matematica, matematico).
+carrera(logica_matematica, ingeniero).
+carrera(logica_matematica, estadistico).
+carrera(logica_matematica, cientifico_de_datos).
+
+% Espacial
+carrera(espacial, arquitecto).
+carrera(espacial, disenador_grafico).
+carrera(espacial, ingeniero_civil).
+carrera(espacial, artista).
+
+% Música
+carrera(musica, musico).
+carrera(musica, compositor).
+carrera(musica, director_de_orquesta).
+carrera(musica, profesor_de_musica).
+
+% Interpersonal
+carrera(interpersonal, psicologo).
+carrera(interpersonal, trabajador_social).
+carrera(interpersonal, docente).
+carrera(interpersonal, lider_de_recursos_humanos).
+
+% Kinestésico Corporal
+carrera(kinestesico_corporal, deportista).
+carrera(kinestesico_corporal, fisioterapeuta).
+carrera(kinestesico_corporal, bailarín).
+carrera(kinestesico_corporal, entrenador_personal).
+
+% Intrapersonal
+carrera(intrapersonal, psicoterapeuta).
+carrera(intrapersonal, coach).
+carrera(intrapersonal, filosofo).
+carrera(intrapersonal, consultor).
+
+% Naturalista
+carrera(naturalista, biologo).
+carrera(naturalista, agronomo).
+carrera(naturalista, ecologista).
+carrera(naturalista, veterinario).
+
+
+
 
 % Consulta para obtener las preguntas agrupadas por área
 preguntas_por_area(Resultado) :-

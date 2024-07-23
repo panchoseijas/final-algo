@@ -5,6 +5,7 @@ from fastapi import Request
 import uvicorn
 from calcular_probabilidades_areas import calcular_probabilidades_areas
 from consultar_preguntas import consultar_preguntas
+from consultar_carreras import consultar_carreras
 
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -33,6 +34,11 @@ async def post_resultado(request: Request):
     print("hola")
     respuestas = await request.json()
     return calcular_probabilidades_areas(respuestas)
+
+@app.post("/carreras", response_class=JSONResponse)
+async def post_resultado(request: Request):
+    area = await request.json()
+    return consultar_carreras(area)
 
 if __name__ == "__main__":
     uvicorn.run(app, host="localhost", port=8000)

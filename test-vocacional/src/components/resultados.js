@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import { Bar } from 'react-chartjs-2'
 import {
   Chart as ChartJS,
@@ -14,22 +14,12 @@ import Button from '@mui/material/Button';
 // Registrar los componentes de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
-const carreras = {
-  "Lingüística": ["Periodista", "Escritor", "Editor", "Profesor de Lengua"],
-  "Lógica Matemática": ["Matemático", "Ingeniero", "Estadístico", "Científico de Datos"],
-  "Espacial": ["Arquitecto", "Diseñador Gráfico", "Ingeniero Civil", "Artista"],
-  "Música": ["Músico", "Compositor", "Director de Orquesta", "Profesor de Música"],
-  "Interpersonal": ["Psicólogo", "Trabajador Social", "Docente", "Líder de Recursos Humanos"],
-  "Kinestésico Corporal": ["Deportista", "Fisioterapeuta", "Bailarín", "Entrenador Personal"],
-  "Intrapersonal": ["Psicoterapeuta", "Coach", "Filósofo", "Consultor"],
-  "Naturalista": ["Biólogo", "Agrónomo", "Ecologista", "Veterinario"]
-}
 
 const Resultados = ({ resultados }) => {
   const data = {
     labels: [
       'Lingüística',
-      'Lógica Matemática',
+      'Logica Matematica',
       'Espacial',
       'Música',
       'Interpersonal',
@@ -75,6 +65,14 @@ const Resultados = ({ resultados }) => {
     ],
   }
 
+  function format(str) {
+    return (str.charAt(0).toUpperCase() + str.slice(1)).replace(/_/g, ' ')
+  }
+
+  function normalize(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, '_').toLowerCase();
+  }
+
   const options = {
     responsive: true,
     plugins: {
@@ -90,21 +88,49 @@ const Resultados = ({ resultados }) => {
 
   const porcentajes = data.datasets[0].data
   const maxPorcentaje = Math.max(...porcentajes)
-  const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)]
+  const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)].toLocaleLowerCase().replace('_', ' ')
+  const [carreras, setCarreras] = useState({})
+
+  console.log(resultados)
+  console.log(areaRecomendada)
+  console.log(normalize(areaRecomendada))
+  console.log(carreras[areaRecomendada.toLocaleLowerCase().replace(' ', '_')])
+
+
+
+  async function postArea(area) {
+    const response = await fetch('http://localhost:8000/carreras', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(area)
+    })
+
+    const carreras = await response.json()
+    console.log(carreras)
+    setCarreras(carreras)
+  }
+
+  useEffect(() => {
+    postArea(normalize(areaRecomendada))
+  }, [])
+
+  console.log('Carreras', carreras)
   return (
     data && (
       <div>
-        <h3>Te recomendamos: {areaRecomendada}</h3>
+        <h3>Area recomendada: {format(areaRecomendada)}</h3>
         <h4>Carreras recomendadas:</h4>
         <ul>
-          {carreras[areaRecomendada].map((carrera, index) => (
-            <li key={index}>{carrera}</li>
+          {carreras[normalize(areaRecomendada)] && carreras[normalize(areaRecomendada)].map((carrera, index) => (
+            <li key={index}>{format(carrera)}</li>
           ))}
         </ul>
         <Bar data={data} options={options} />
         <Button className='button' variant='contained' onClick={() => window.location.reload(true)} size='large'>
-              Volver a Empezar
-            </Button>
+          Volver a Empezar
+        </Button>
       </div>
     )
   )

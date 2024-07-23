@@ -13,6 +13,16 @@ function Preguntas({ areas, setResultados }) {
 
 
     async function postResults(respuestas) {
+        const temp = [
+            3, 4, 3, 6,
+            7, 4, 7, 5,
+            9, 5, 4, 4,
+            10, 4, 1, 1,
+            10, 10, 10, 10,
+            1, 2, 2, 3,
+            1, 1, 2, 3,
+            1, 2, 1, 1
+        ]
         const response = await fetch('http://localhost:8000/resultado', {
             method: 'POST',
             headers: {
