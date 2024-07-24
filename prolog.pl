@@ -109,8 +109,6 @@ calcular_probabilidades([], _, _, []).
 calcular_probabilidades([Area|Areas], Preguntas, Respuestas, [Area-Probabilidad|Probabilidades]) :-
     findall(Pregunta, pregunta(Area, Pregunta), PreguntasArea),
     maplist(pregunta_respuesta(Respuestas, Preguntas), PreguntasArea, RespuestasArea),
-    length(PreguntasArea, CantidadPreguntasArea),
-    length(Preguntas, TotalPreguntas),
     sum_list(Respuestas, SumaTotal),
     sum_list(RespuestasArea, SumaArea),
     Probabilidad is (SumaArea / SumaTotal) * 100,
@@ -123,8 +121,6 @@ pregunta_respuesta(Respuestas, Preguntas, Pregunta, Respuesta) :-
 % Regla para calcular probabilidades basadas en respuestas dadas
 calcular_probabilidades_respuestas(Respuestas, Probabilidades) :-
     findall(Pregunta, pregunta(_, Pregunta), Preguntas),
-    length(Preguntas, Len),
-    length(Respuestas, Len),
     forall(member(R, Respuestas), (R >= 0, R =< 10)),
     findall(Area, pregunta(Area, _), Areas),
     list_to_set(Areas, AreasSet),
