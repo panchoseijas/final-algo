@@ -5,8 +5,6 @@ import './App.css'
 import Form from './components/Form'
 import Resultados from './components/resultados'
 
-
-
 function App() {
   const [resultados, setResultados] = useState(null)
   return (
@@ -19,7 +17,6 @@ function App() {
       ) : (
         <Form setResultados={setResultados} />
       )}
-
     </div>
   )
 }
