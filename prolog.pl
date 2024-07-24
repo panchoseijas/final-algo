@@ -97,13 +97,6 @@ preguntas_por_area(Resultado) :-
         findall(Pregunta, pregunta(Area, Pregunta), Preguntas)
     ), Resultado).
 
-% Regla para sumar las puntuaciones por área
-sumar_puntuaciones([], [], 0).
-sumar_puntuaciones([Respuesta|Respuestas], [Pregunta|Preguntas], Suma) :-
-    pregunta(Area, Pregunta),
-    sumar_puntuaciones(Respuestas, Preguntas, SumaResto),
-    Suma is SumaResto + Respuesta.
-
 % Regla para calcular la probabilidad de cada área
 calcular_probabilidades([], _, _, []).
 calcular_probabilidades([Area|Areas], Preguntas, Respuestas, [Area-Probabilidad|Probabilidades]) :-
