@@ -1,4 +1,5 @@
-% Define las preguntas y sus áreas correspondientes
+%HECHOS
+% Preguntas por área
 pregunta(linguistica, "Leer libros, revistas, novelas, ensayos, etc.").
 pregunta(linguistica, "Escribir textos").
 pregunta(linguistica, "Analizar e identificar las ideas principales de un texto").
@@ -39,8 +40,7 @@ pregunta(naturalista, "Analizar materia organica").
 pregunta(naturalista, "Estudiar temas vinculados a la biologia y el cuerpo humano").
 pregunta(naturalista, "Analizar fenomenos naturales").
 
-% Carreras y profesiones en diferentes campos
-
+% Carreras y profesiones en diferentes áreas
 % Lingüística
 carrera(linguistica, periodista).
 carrera(linguistica, escritor).
@@ -89,24 +89,22 @@ carrera(naturalista, agronomo).
 carrera(naturalista, ecologista).
 carrera(naturalista, veterinario).
 
-
-
-
-% Consulta para obtener las preguntas agrupadas por área
+%REGLAS
+% Regla para obtener las preguntas agrupadas por área
 preguntas_por_area(Resultado) :-
     findall(Area-Preguntas, (
         pregunta(Area, _),
         findall(Pregunta, pregunta(Area, Pregunta), Preguntas)
     ), Resultado).
 
-% Función para sumar las puntuaciones por área
+% Regla para sumar las puntuaciones por área
 sumar_puntuaciones([], [], 0).
 sumar_puntuaciones([Respuesta|Respuestas], [Pregunta|Preguntas], Suma) :-
     pregunta(Area, Pregunta),
     sumar_puntuaciones(Respuestas, Preguntas, SumaResto),
     Suma is SumaResto + Respuesta.
 
-% Función para calcular la probabilidad de cada área
+% Regla para calcular la probabilidad de cada área
 calcular_probabilidades([], _, _, []).
 calcular_probabilidades([Area|Areas], Preguntas, Respuestas, [Area-Probabilidad|Probabilidades]) :-
     findall(Pregunta, pregunta(Area, Pregunta), PreguntasArea),
@@ -122,7 +120,7 @@ pregunta_respuesta(Respuestas, Preguntas, Pregunta, Respuesta) :-
     nth1(Index, Preguntas, Pregunta),
     nth1(Index, Respuestas, Respuesta).
 
-% Función principal para calcular probabilidades basadas en respuestas dadas
+% Regla para calcular probabilidades basadas en respuestas dadas
 calcular_probabilidades_respuestas(Respuestas, Probabilidades) :-
     findall(Pregunta, pregunta(_, Pregunta), Preguntas),
     length(Preguntas, Len),
