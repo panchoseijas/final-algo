@@ -9,11 +9,10 @@ import {
   Tooltip,
   Legend,
 } from 'chart.js'
-import Button from '@mui/material/Button';
+import Button from '@mui/material/Button'
 
 // Registrar los componentes de Chart.js
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
-
 
 const Resultados = ({ resultados }) => {
   const data = {
@@ -70,7 +69,11 @@ const Resultados = ({ resultados }) => {
   }
 
   function normalize(str) {
-    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ /g, '_').toLowerCase();
+    return str
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/ /g, '_')
+      .toLowerCase()
   }
 
   const options = {
@@ -88,15 +91,10 @@ const Resultados = ({ resultados }) => {
 
   const porcentajes = data.datasets[0].data
   const maxPorcentaje = Math.max(...porcentajes)
-  const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)].toLocaleLowerCase().replace('_', ' ')
+  const areaRecomendada = data.labels[porcentajes.indexOf(maxPorcentaje)]
+    .toLocaleLowerCase()
+    .replace('_', ' ')
   const [carreras, setCarreras] = useState({})
-
-  console.log(resultados)
-  console.log(areaRecomendada)
-  console.log(normalize(areaRecomendada))
-  console.log(carreras[areaRecomendada.toLocaleLowerCase().replace(' ', '_')])
-
-
 
   async function postArea(area) {
     const response = await fetch('http://localhost:8000/carreras', {
@@ -104,11 +102,10 @@ const Resultados = ({ resultados }) => {
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(area)
+      body: JSON.stringify(area),
     })
 
     const carreras = await response.json()
-    console.log(carreras)
     setCarreras(carreras)
   }
 
@@ -116,26 +113,29 @@ const Resultados = ({ resultados }) => {
     postArea(normalize(areaRecomendada))
   }, [])
 
-  console.log('Carreras', carreras)
   return (
     data && (
       <div>
         <h3>Area recomendada: {format(areaRecomendada)}</h3>
         <h4>Carreras recomendadas:</h4>
         <ul>
-          {carreras[normalize(areaRecomendada)] && carreras[normalize(areaRecomendada)].map((carrera, index) => (
-            <li key={index}>{format(carrera)}</li>
-          ))}
+          {carreras[normalize(areaRecomendada)] &&
+            carreras[normalize(areaRecomendada)].map((carrera, index) => (
+              <li key={index}>{format(carrera)}</li>
+            ))}
         </ul>
         <Bar data={data} options={options} />
-        <Button className='button' variant='contained' onClick={() => window.location.reload(true)} size='large'>
+        <Button
+          className='button'
+          variant='contained'
+          onClick={() => window.location.reload(true)}
+          size='large'
+        >
           Volver a Empezar
         </Button>
       </div>
     )
   )
 }
-
-
 
 export default Resultados
