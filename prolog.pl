@@ -74,7 +74,7 @@ carrera(interpersonal, lider_de_recursos_humanos).
 % Kinestésico Corporal
 carrera(kinestesico_corporal, deportista).
 carrera(kinestesico_corporal, fisioterapeuta).
-carrera(kinestesico_corporal, bailarín).
+carrera(kinestesico_corporal, bailarin).
 carrera(kinestesico_corporal, entrenador_personal).
 
 % Intrapersonal
