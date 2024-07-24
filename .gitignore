@@ -2,3 +2,5 @@ venv/
 *.pyc
 .vscode/
 build/
+.DS_STORE
+npm-debug.log
