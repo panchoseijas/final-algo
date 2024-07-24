@@ -1,13 +1,13 @@
 from fastapi import FastAPI
-from fastapi.responses import HTMLResponse, JSONResponse
-from fastapi.templating import Jinja2Templates
+from fastapi.responses import JSONResponse
 from fastapi import Request
+from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
+
 from calcular_probabilidades_areas import calcular_probabilidades_areas
 from consultar_preguntas import consultar_preguntas
 from consultar_carreras import consultar_carreras
 
-from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -19,19 +19,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-templates = Jinja2Templates(directory="templates")
-
-@app.get("/", response_class=HTMLResponse)
-async def read_root(request: Request):
-    return templates.TemplateResponse("index.html", {"request": request})
-
 @app.get("/preguntas", response_class=JSONResponse)
 async def read_root(request: Request):
     return consultar_preguntas()
 
 @app.post("/resultado", response_class=JSONResponse)
 async def post_resultado(request: Request):
-    print("hola")
     respuestas = await request.json()
     return calcular_probabilidades_areas(respuestas)
 
